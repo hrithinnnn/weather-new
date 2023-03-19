@@ -1,0 +1,45 @@
+<div #bodyDiv (click)="clickBody($event)" class="body">
+
+  <!-- <input type="text" [(ngModel)]="search"> -->
+  <div class="form__group field">
+    <input #search type="input" class="form__field" placeholder="Name" name="name" id='name' required [(ngModel)]="namee" [formControl]="searchControl" />
+    <label for="name" class="form__label">Place</label>
+  </div>
+  <div #resultDiv class="results">
+  
+    <mat-list>
+      <mat-list-item (click)="showWeather(result.url)" *ngFor="let result of results">
+        <div mat-line>{{result.name}}</div>
+        <div mat-line> {{result.country}} </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  
+  </div>
+<!-- <button (click)="searchCall(search.value)">Search</button> -->
+<div class="result_names">
+<!-- <mat-menu #menu="matMenu">
+<button mat-menu-item (click)="showWeather(result.url)" *ngFor="let result of results">
+
+  {{ result.name }}
+
+</button>
+</mat-menu> -->
+
+</div>
+
+<!-- <div class="gradient-wrapper absolute-center"> -->
+
+<div class="weather absolute-center" *ngIf="weather">
+  <div class="icon"><img src = "{{ weather.current.condition.icon}}" ></div>
+  <div class="name line">{{weather.location.name}}</div>
+    <div class="condition line">{{ weather.current.condition.text }}</div>
+    <div class="humidity line">humidity: {{ weather.current.humidity }}%</div>
+    <div class="feels-like line">Feels like: {{ weather.current.feelslike_c }}' C</div>
+    <div class="temp line"> Temperature: {{ weather.current.temp_c }}' C</div>
+  </div>
+
+</div>
+  
+
+<!-- </div> -->
